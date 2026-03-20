@@ -392,13 +392,28 @@ class RobTextStats:
 def collect_files(targets):
     files = []
     for target in targets:
-        if os.path.isdir(target):
-            for root, _, filenames in os.walk(target):
-                for fname in filenames:
-                    if fname.lower().endswith(('.md', '.markdown', '.txt')):
-                        files.append(os.path.join(root, fname))
+        if os.path.isfile(target):
+            files.append(target)
+        elif os.path.isdir(target):
+            if getattr(collect_files, 'recursive', True):
+                for root, _, filenames in os.walk(target):
+                    for fname in filenames:
+                        if fname.lower().endswith(('.md', '.markdown', '.txt')):
+                            files.append(os.path.join(root, fname))
+            else:
+                for fname in os.listdir(target):
+                    fpath = os.path.join(target, fname)
+                    if os.path.isfile(fpath) and fname.lower().endswith(('.md', '.markdown', '.txt')):
+                        files.append(fpath)
         else:
-            files.extend(glob.glob(target))
+            # If recursive, use glob with **
+            if getattr(collect_files, 'recursive', True):
+                files.extend(glob.glob(target, recursive=True))
+                # If pattern does not include '**', add it for recursive search
+                if '**' not in target and (os.sep not in target or target.startswith('*')):
+                    files.extend(glob.glob(f'**/{target}', recursive=True))
+            else:
+                files.extend(glob.glob(target))
     return list(sorted(set(files)))
 
 if __name__ == "__main__":
@@ -416,6 +431,7 @@ if __name__ == "__main__":
     parser.add_argument('--list-metrics', action='store_true', help='List all available stat metrics collected by this utility')
     parser.add_argument('--overall', action='store_true', help='Output only overall totals/averages across all files, not per-file stats')
     parser.add_argument('--version', action='store_true', help='Show version and exit')
+    parser.add_argument('-r', '--recursive', action='store_true', default=False, help='Recursively search folders for files (default: off)')
     args = parser.parse_args()
 
     if args.version:
@@ -477,6 +493,8 @@ if __name__ == "__main__":
         for m in all_metrics:
             print(f"- {m}")
         sys.exit(0)
+    # Set recursivity for collect_files
+    collect_files.recursive = args.recursive
     files = collect_files(args.targets)
     if not files:
         print("No files found matching targets.")

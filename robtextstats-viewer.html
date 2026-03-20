@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RobTextStats JSON Table Viewer</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 2em; }
+        table { border-collapse: collapse; width: 100%; }
+        th, td { border: 1px solid #ccc; padding: 8px; text-align: left; }
+        th { background: #f4f4f4; }
+        tr:nth-child(even) { background: #fafafa; }
+        .file-input { margin-bottom: 1em; }
+    </style>
+</head>
+<body>
+    <h2 style="text-align:left; font-size: 3em; margin-bottom: 0.5em;">RobTextStats JSON Table Viewer</h2>
+    <input type="file" id="jsonFile" class="file-input" accept="application/json">
+    <div id="tableContainer"></div>
+    <div id="chartsContainer" style="width:100%;max-width:1200px;margin-top:2em;display:grid;grid-template-columns:1fr 1fr;grid-gap:2em;">
+        <div><canvas id="wordCountChart" style="width:100%;height:300px;"></canvas></div>
+        <div><canvas id="fleschGradeChart" style="width:100%;height:300px;"></canvas></div>
+        <div><canvas id="readingTimeChart" style="width:100%;height:300px;"></canvas></div>
+        <div><canvas id="fleschEaseChart" style="width:100%;height:300px;"></canvas></div>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-trendline@2.0.0/dist/chartjs-plugin-trendline.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@1.4.0/dist/chartjs-plugin-annotation.min.js"></script>
+    <script>
+        document.getElementById('jsonFile').addEventListener('change', function(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                try {
+                    // Trim whitespace and handle BOM
+                    let text = e.target.result;
+                    if (text.charCodeAt(0) === 0xFEFF) text = text.slice(1); // Remove BOM if present
+                    text = text.trim();
+                    const data = JSON.parse(text);
+                    renderTable(data);
+                } catch (err) {
+                    console.error('JSON parse error:', err);
+                    document.getElementById('tableContainer').innerHTML = '<p style="color:red">Invalid JSON file: ' + err.message + '</p>';
+                }
+            };
+            reader.readAsText(file);
+        });
+
+        function renderTable(data) {
+            if (!Array.isArray(data) || data.length === 0) {
+                document.getElementById('tableContainer').innerHTML = '<p>No data found in JSON.</p>';
+                return;
+            }
+            // Use the structure from test.json: file_info.file_name and basic fields
+            const first = data[0];
+            const basicFields = first && first.basic ? Object.keys(first.basic) : [];
+            if (!first.file_info || !first.file_info.file_name || basicFields.length === 0) {
+                document.getElementById('tableContainer').innerHTML = '<p>JSON does not match expected structure.</p>';
+                return;
+            }
+            let html = '<table><thead><tr>';
+            function toTitleCase(str) {
+                return str.replace(/_/g, ' ').replace(/\w\S*/g, function(txt) {
+                    return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+                });
+            }
+            html += '<th style="text-align:center">File Path</th>';
+            basicFields.forEach(key => {
+                html += `<th style="text-align:center">${toTitleCase(key)}</th>`;
+            });
+            html += '</tr></thead><tbody>';
+            // Prepare totals and averages
+            const sumFields = [
+                'word_count',
+                'sentence_count',
+                'syllable_count',
+                'polysyllable_count',
+                'approx_reading_time_min'
+            ];
+            const totals = {};
+            const counts = {};
+            basicFields.forEach(key => {
+                totals[key] = 0;
+                counts[key] = 0;
+            });
+            function formatNumber(val) {
+                if (typeof val === 'number') {
+                    return val.toLocaleString(undefined, {maximumFractionDigits: 2});
+                }
+                if (typeof val === 'string' && !isNaN(val)) {
+                    return Number(val).toLocaleString(undefined, {maximumFractionDigits: 2});
+                }
+                return val;
+            }
+            function getRightmostFolderAndFile(path) {
+                if (!path) return '';
+                // Normalize slashes
+                path = path.replace(/\\/g, '/');
+                const parts = path.split('/');
+                if (parts.length >= 2) {
+                    return parts.slice(-2).join('/');
+                } else if (parts.length === 1) {
+                    return parts[0];
+                }
+                return path;
+            }
+            data.forEach(obj => {
+                html += '<tr>';
+                const filePath = obj.file_info && obj.file_info.file_path ? obj.file_info.file_path : '';
+                html += `<td style="text-align:left">${getRightmostFolderAndFile(filePath)}</td>`;
+                basicFields.forEach(key => {
+                    let val = obj.basic ? obj.basic[key] : '';
+                    html += `<td style="text-align:right">${val !== undefined ? formatNumber(val) : ''}</td>`;
+                    if (typeof val === 'number') {
+                        totals[key] += val;
+                        counts[key] += 1;
+                    }
+                });
+                html += '</tr>';
+            });
+            // Add totals/averages row
+            html += '<tr style="font-weight:bold;background:#e9e9e9">';
+            html += '<td style="text-align:left">Total/Average</td>';
+            basicFields.forEach(key => {
+                if (sumFields.includes(key)) {
+                    html += `<td style="text-align:right">${formatNumber(totals[key])}</td>`;
+                } else {
+                    // Average, rounded to 2 decimals
+                    const avg = counts[key] ? (totals[key] / counts[key]) : '';
+                    html += `<td style="text-align:right">${avg !== '' ? formatNumber(avg) : ''}</td>`;
+                }
+            });
+            html += '</tr>';
+            html += '</tbody></table>';
+            document.getElementById('tableContainer').innerHTML = html;
+            // Draw charts
+            drawCharts(data, basicFields);
+        }
+
+        function drawCharts(data, basicFields) {
+            // Prepare X-axis labels (file names)
+            const labels = data.map(obj => obj.file_info && obj.file_info.file_name ? obj.file_info.file_name : '');
+            // Prepare datasets
+            const wordCounts = data.map(obj => obj.basic && obj.basic.word_count ? obj.basic.word_count : 0);
+            const fleschGrades = data.map(obj => obj.basic && obj.basic.flesch_grade_level ? obj.basic.flesch_grade_level : 0);
+            const readingTimes = data.map(obj => obj.basic && obj.basic.approx_reading_time_min ? obj.basic.approx_reading_time_min : 0);
+            const fleschEase = data.map(obj => obj.basic && obj.basic.flesch_reading_ease ? obj.basic.flesch_reading_ease : 0);
+
+            // Destroy previous charts if they exist (Chart.js v4+)
+            if (drawCharts.wordCountChart && typeof drawCharts.wordCountChart.destroy === 'function') drawCharts.wordCountChart.destroy();
+            if (drawCharts.fleschGradeChart && typeof drawCharts.fleschGradeChart.destroy === 'function') drawCharts.fleschGradeChart.destroy();
+            if (drawCharts.readingTimeChart && typeof drawCharts.readingTimeChart.destroy === 'function') drawCharts.readingTimeChart.destroy();
+            if (drawCharts.fleschEaseChart && typeof drawCharts.fleschEaseChart.destroy === 'function') drawCharts.fleschEaseChart.destroy();
+            // Flesch Reading Ease Chart
+            const ctx4 = document.getElementById('fleschEaseChart').getContext('2d');
+            drawCharts.fleschEaseChart = new Chart(ctx4, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Flesch Reading Ease',
+                        data: fleschEase,
+                        borderColor: '#8e44ad',
+                        backgroundColor: 'rgba(142,68,173,0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 3,
+                        trendlineLinear: {
+                            style: "rgba(255,128,0,0.7)",
+                            lineStyle: "dotted",
+                            width: 3
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Flesch Reading Ease' },
+                        annotation: {
+                            annotations: {
+                                targetRange: {
+                                    type: 'box',
+                                    yMin: 60,
+                                    yMax: 75,
+                                    backgroundColor: 'rgba(0,200,0,0.10)',
+                                    borderWidth: 0
+                                }
+                            }
+                        }
+                    },
+                    scales: { x: { title: { display: true, text: 'File Path' } }, y: { title: { display: true, text: 'Flesch Reading Ease' }, beginAtZero: true } }
+                }
+            });
+
+            // Word Count Chart
+            const ctx1 = document.getElementById('wordCountChart').getContext('2d');
+            drawCharts.wordCountChart = new Chart(ctx1, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Word Count',
+                        data: wordCounts,
+                        borderColor: '#0074D9',
+                        backgroundColor: 'rgba(0,116,217,0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 3,
+                        trendlineLinear: {
+                            style: "rgba(255,0,0,0.7)",
+                            lineStyle: "dotted",
+                            width: 3
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Word Count' },
+                        annotation: {
+                            annotations: {
+                                targetRange: {
+                                    type: 'box',
+                                    yMin: 2200,
+                                    yMax: 2900,
+                                    backgroundColor: 'rgba(0,200,0,0.10)',
+                                    borderWidth: 0
+                                }
+                            }
+                        }
+                    },
+                    scales: { x: { title: { display: true, text: 'File Name' } }, y: { title: { display: true, text: 'Word Count' }, beginAtZero: true } }
+                }
+            });
+
+            // Flesch Grade Level Chart
+            const ctx2 = document.getElementById('fleschGradeChart').getContext('2d');
+            drawCharts.fleschGradeChart = new Chart(ctx2, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Flesch Grade Level',
+                        data: fleschGrades,
+                        borderColor: '#FF4136',
+                        backgroundColor: 'rgba(255,65,54,0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 3,
+                        trendlineLinear: {
+                            style: "rgba(0,0,255,0.7)",
+                            lineStyle: "dotted",
+                            width: 3
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        legend: { display: false },
+                        title: { display: true, text: 'Flesch Grade Level' },
+                        annotation: {
+                            annotations: {
+                                targetRange: {
+                                    type: 'box',
+                                    yMin: 7.5,
+                                    yMax: 8.8,
+                                    backgroundColor: 'rgba(0,200,0,0.10)',
+                                    borderWidth: 0
+                                }
+                            }
+                        }
+                    },
+                    scales: { x: { title: { display: true, text: 'File Name' } }, y: { title: { display: true, text: 'Flesch Grade Level' }, beginAtZero: true } }
+                }
+            });
+
+            // Approx Reading Time Min Chart
+            const ctx3 = document.getElementById('readingTimeChart').getContext('2d');
+            drawCharts.readingTimeChart = new Chart(ctx3, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Approx Reading Time Min',
+                        data: readingTimes,
+                        borderColor: '#2ECC40',
+                        backgroundColor: 'rgba(46,204,64,0.1)',
+                        fill: true,
+                        tension: 0.2,
+                        pointRadius: 3,
+                        trendlineLinear: {
+                            style: "rgba(255,128,0,0.7)",
+                            lineStyle: "dotted",
+                            width: 3
+                        }
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: { legend: { display: false }, title: { display: true, text: 'Approx Reading Time (Min)' } },
+                    scales: { x: { title: { display: true, text: 'File Name' } }, y: { title: { display: true, text: 'Minutes' }, beginAtZero: true } }
+                }
+            });
+        }
+    </script>
+</body>
+</html>
