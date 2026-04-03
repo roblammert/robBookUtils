@@ -1,0 +1,382 @@
+{
+  "stopwords": [
+      "a", "about", "above", "after", "again", "against", "all", "am", "an", "and", "any", "are", "as", "at",
+      "be", "because", "been", "before", "being", "below", "between", "both", "but", "by", "can", "did", "do",
+      "does", "doing", "down", "during", "each", "few", "for", "from", "further", "had", "has", "have",
+      "having", "he", "her", "here", "hers", "herself", "him", "himself", "his", "how", "i", "if", "in",
+      "into", "is", "it", "its", "itself", "just", "me", "more", "most", "my", "myself", "no", "nor", "not",
+      "now", "of", "off", "on", "once", "only", "or", "other", "our", "ours", "ourselves", "out", "over",
+      "own", "same", "she", "should", "so", "some", "such", "than", "that", "the", "their", "theirs", "them",
+      "themselves", "then", "there", "these", "they", "this", "those", "through", "to", "too", "under",
+      "until", "up", "very", "was", "we", "were", "what", "when", "where", "which", "while", "who", "whom",
+      "why", "with", "would", "you", "your", "yours", "yourself", "yourselves", "across", "afterwards",
+      "almost", "alone", "along", "already", "also", "although", "among", "amongst", "another", "anybody",
+      "anyone", "anything", "anywhere", "around", "back", "become", "becomes", "becoming", "beside", "besides",
+      "beyond", "cannot", "could", "else", "elsewhere", "enough", "even", "ever", "every", "everybody",
+      "everyone", "everything", "everywhere", "former", "formerly", "hence", "hereafter", "hereby", "herein",
+      "hereupon", "indeed", "least", "less", "may", "meanwhile", "might", "moreover", "mostly", "much", "must",
+      "namely", "neither", "never", "nevertheless", "none", "nothing", "nowhere", "often", "perhaps", "rather",
+      "seem", "seemed", "seeming", "seems", "several", "since", "somebody", "someone", "something", "sometime",
+      "sometimes", "somewhere", "still", "thereafter", "thereby", "therein", "thereupon", "throughout",
+      "toward", "towards", "upon", "via", "whatever", "whenever", "whereafter", "whereas", "whereby",
+      "wherein", "whereupon", "wherever", "whether", "within", "without", "yet"
+    ],
+  "positive_emotions": [
+      "happy", "joy", "joyful", "calm", "peaceful", "grateful", "hopeful", "optimistic", "relieved", "content",
+      "excited", "confident", "proud", "loved", "supported", "encouraged", "safe", "secure", "satisfied",
+      "better", "good", "great", "excellent", "thrilled", "delighted", "cheerful", "motivated", "energized",
+      "inspired", "thankful", "blessed", "comforted", "accepting", "affectionate", "alive", "amazed",
+      "amazing", "at ease", "blissful", "bright", "buoyant", "cared for", "centered", "compassionate",
+      "connected", "curious", "determined", "ecstatic", "elated", "empowered", "fulfilled", "gentle", "glad",
+      "grounded", "healed", "healing", "honored", "improving", "joyous", "lighthearted", "loving",
+      "meaningful", "open", "peace", "playful", "pleased", "positive", "powerful", "reassured", "refreshed",
+      "renewed", "resilient", "serene", "smiling", "stable", "strong", "tranquil", "trusting", "upbeat",
+      "valued", "vibrant", "warm", "whole"
+    ],
+  "negative_emotions": [
+      "sad", "angry", "anxious", "afraid", "fearful", "worried", "stressed", "depressed", "hopeless",
+      "helpless", "lonely", "guilty", "ashamed", "frustrated", "upset", "hurt", "tired", "exhausted", "empty",
+      "numb", "terrible", "awful", "bad", "miserable", "panicked", "overwhelmed", "irritable", "resentful",
+      "regretful", "despair", "uneasy", "distressed", "agony", "alienated", "alone", "anguish", "annoyed",
+      "apathetic", "burned out", "burned-out", "concerned", "confused", "crushed", "defeated", "dejected",
+      "desperate", "disappointed", "disconnected", "discouraged", "dread", "embarrassed", "emotionless",
+      "enraged", "fear", "grief", "heartbroken", "inadequate", "insecure", "isolated", "lost", "melancholy",
+      "mournful", "nervous", "overloaded", "overstimulated", "painful", "pessimistic", "pressured", "raw",
+      "restless", "scared", "shame", "stuck", "tense", "terrified", "uncertain", "unhappy", "unseen",
+      "vulnerable", "worn out"
+    ],
+  "activation_words": {
+      "high": [
+            "panic", "panicked", "urgent", "intense", "overwhelmed", "agitated", "frenzy", "racing", "shaking",
+            "restless", "amped", "wired", "bursting", "explosive", "furious", "terrified", "alarmed", "chaotic",
+            "hyper", "pressured", "adrenaline", "alarm", "amped up", "breathless", "charged", "clenched", "crisis",
+            "desperate", "edgy", "fired up", "frantic", "frenzied", "heated", "high-strung", "jittery", "keyed up",
+            "on edge", "overclocked", "overdrive", "pumped", "revved", "spun up", "spiraling", "surging", "tense",
+            "triggered", "urgent mode"
+          ],
+      "low": [
+            "numb", "flat", "empty", "drained", "slow", "stuck", "heavy", "quiet", "dull", "blank", "lifeless",
+            "tired", "sleepy", "withdrawn", "detached", "foggy", "still", "lethargic", "unmotivated", "passive",
+            "apathetic", "checked out", "collapsed", "deactivated", "depleted", "disengaged", "downcast", "faded",
+            "faint", "frozen", "half-asleep", "low energy", "muted", "resigned", "shut down", "sluggish",
+            "spaced out", "spent", "unfocused", "worn-down"
+          ]
+    },
+  "catastrophizing_terms": [
+      "ruined", "disaster", "catastrophe", "hopeless", "never recover", "everything is over", "worst case",
+      "falling apart", "can't handle", "unbearable", "total failure", "nothing will work", "life is over",
+      "doomed", "broken forever", "all is lost", "apocalypse", "complete disaster", "end of the world",
+      "going to collapse", "i will never be okay", "irreparable", "no way out", "point of no return",
+      "this is the end", "totally doomed", "worst possible outcome", "worst thing ever"
+    ],
+  "cognitive_distortions": {
+      "all_or_nothing": [
+            "always", "never", "completely", "totally", "nothing", "everything", "all or nothing",
+            "black and white", "no middle ground", "entirely", "all good or all bad", "all wrong", "either or",
+            "full success or total failure", "no exceptions", "one hundred percent", "perfect or worthless"
+          ],
+      "should_statements": [
+            "should", "shouldn't", "must", "have to", "ought to", "supposed to", "need to", "required to",
+            "cannot fail", "should have", "have got to", "i should be better", "i should know better", "must not",
+            "ought not", "supposed to be"
+          ],
+      "mind_reading": [
+            "they think", "she thinks", "he thinks", "everyone thinks", "they must think", "i know they think",
+            "they probably think", "they hate me", "they judge me", "they look down on me",
+            "everyone is judging me", "i can tell what they think", "they are disappointed in me",
+            "they assume the worst", "they think im weak", "they think i am weak"
+          ],
+      "overgeneralization": [
+            "every time", "nothing ever", "this always happens", "i always fail", "i never get", "everyone leaves",
+            "nobody cares", "it keeps happening", "same as always", "i mess up every time",
+            "nothing ever works out", "this proves i cant do anything right", "this will always be the same"
+          ],
+      "labeling": [
+            "i am a failure", "i'm a failure", "i am worthless", "i'm worthless", "i am pathetic", "i'm pathetic",
+            "idiot", "loser", "bad person", "broken person", "i am broken beyond repair", "i am incompetent",
+            "i am unlovable", "i am worthless trash", "im incompetent", "im unlovable"
+          ],
+      "fortune_telling": [
+            "it will go badly", "i will fail", "it won't work", "nothing will change", "it is going to be awful",
+            "i'm going to mess up", "this will end badly", "i know what will happen", "it will never improve",
+            "i already know it will fail", "i know this wont last", "it is bound to go wrong",
+            "the future is hopeless"
+          ],
+      "personalization": [
+            "it's my fault", "this is on me", "i caused this", "because of me", "i ruined it",
+            "they are upset because of me", "i am to blame", "i did this to them",
+            "everyone is upset because of me", "its all my fault", "their mood is my responsibility"
+          ],
+      "discounting_positives": [
+            "doesn't count", "just luck", "anyone could do it", "not a big deal", "it means nothing",
+            "they're just being nice", "that was nothing", "i don't deserve credit",
+            "it was easy so it doesnt count", "it was nothing special", "that success was fake"
+          ]
+    },
+  "agency": {
+      "internal": [
+            "choose", "decide", "plan", "start", "try", "learn", "work", "act", "focus", "commit", "improve",
+            "build", "create", "practice", "adjust", "persist", "change", "solve", "organize", "prepare", "adapt",
+            "advance", "attempt", "clarify", "complete", "control", "cope", "deliver", "develop", "discipline",
+            "execute", "finish", "follow through", "improvise", "initiate", "lead", "manage", "navigate", "own",
+            "problem-solve", "progress", "rebuild", "recover", "refocus", "regulate", "respond", "take action",
+            "take responsibility"
+          ],
+      "external": [
+            "forced", "stuck", "trapped", "can't", "cannot", "have no control", "they made me", "circumstances",
+            "fate", "luck", "powerless", "blocked", "prevented", "dependent", "pressure", "expectations",
+            "obligated", "controlled", "helpless", "restricted", "at their mercy", "beyond my control",
+            "can't change it", "constrained", "dictated by", "held back", "immovable", "it happened to me",
+            "limited by", "outside forces", "stopped by", "subject to", "uncontrollable"
+          ]
+    },
+  "powerlessness": [
+      "powerless", "helpless", "stuck", "trapped", "no control", "can't do anything", "nothing i can do",
+      "out of my hands", "paralyzed", "defeated", "cornered", "at a standstill", "can't change anything",
+      "i am powerless", "no agency", "no options", "stopped in my tracks"
+    ],
+  "self_efficacy": [
+      "i can", "i will", "i'm capable", "i am capable", "i can handle", "i can manage", "i figured it out",
+      "i solved", "i did it", "i can do this", "i made progress", "i improved", "i learned",
+      "i'll keep trying", "i am improving", "i can adapt", "i can improve", "i can make progress",
+      "i can recover", "i can try again", "i handled this", "i know how to do this", "i made it through",
+      "i trust myself", "i will keep going", "i will manage"
+    ],
+  "self_criticism": [
+      "i am not good enough", "i'm not good enough", "i hate myself", "i'm useless", "i am useless",
+      "i'm a mess", "i am a mess", "i always fail", "i'm broken", "i am broken", "i'm weak", "i am weak",
+      "i ruin everything", "i'm disappointing", "i am a burden", "i am a disappointment", "i am not worthy",
+      "i am the problem", "i can't do anything right", "i dont deserve love", "i hate who i am",
+      "i ruin things", "im a burden", "im not worthy"
+    ],
+  "self_affirmation": [
+      "i am enough", "i'm enough", "i did well", "i'm proud of myself", "i am proud of myself", "i handled it",
+      "i am learning", "i'm learning", "i can do hard things", "i deserve care", "i am growing", "i'm growing",
+      "i made progress", "i showed up", "i stayed consistent", "i am capable", "i am resilient",
+      "i can recover", "i deserve kindness", "i did my best", "i have value", "i matter",
+      "i showed resilience", "im resilient", "my effort matters", "one step at a time"
+    ],
+  "pronouns": {
+      "first_person": [
+            "i", "me", "my", "mine", "myself", "we", "us", "our", "ours", "ourselves"
+          ],
+      "second_person": [
+            "you", "your", "yours", "yourself", "yourselves", "u"
+          ],
+      "third_person": [
+            "he", "him", "his", "himself", "she", "her", "hers", "herself", "they", "them", "their", "theirs",
+            "themselves", "it", "its", "itself", "themself"
+          ]
+    },
+  "temporal": {
+      "past": [
+            "was", "were", "had", "did", "used to", "yesterday", "last", "before", "previously", "earlier", "ago",
+            "once", "formerly", "then", "back then", "earlier today", "in the past", "last night", "last week",
+            "previous", "prior", "previous day", "previous week"
+          ],
+      "present": [
+            "am", "is", "are", "today", "now", "currently", "right now", "at the moment", "these days",
+            "presently", "ongoing", "still", "this week", "this month", "here", "at present", "in this moment",
+            "lately", "nowadays", "right here"
+          ],
+      "future": [
+            "will", "going to", "tomorrow", "next", "soon", "later", "eventually", "plan to", "intend to", "might",
+            "could", "hope to", "in the future", "upcoming", "eventual", "from now on", "in time", "later on",
+            "long-term", "next week", "someday", "the next time"
+          ]
+    },
+  "regret_terms": [
+      "regret", "wish i had", "if only", "should have", "could have", "missed chance", "i blew it",
+      "i messed up", "too late", "i shouldn't have", "i regret that", "i wish i could undo it", "i wish i did",
+      "missed opportunity", "shouldnt have done that", "that was a mistake"
+    ],
+  "anticipation_terms": [
+      "looking forward", "can't wait", "soon", "upcoming", "next step", "plan", "expect", "prepare",
+      "anticipate", "excited for", "hope for", "toward", "anticipation", "eager for", "future plan",
+      "looking ahead", "next chapter", "next move", "ready for"
+    ],
+  "behavioral": {
+      "sleep": [
+            "sleep", "slept", "insomnia", "nap", "rest", "awake", "asleep", "dream", "nightmare", "bedtime",
+            "tired", "exhausted", "rested", "woke", "waking", "bed", "bedrest", "dozed", "dozing", "overslept",
+            "sleeping", "sleepless", "wakeful", "woke up"
+          ],
+      "eating": [
+            "eat", "ate", "eating", "meal", "breakfast", "lunch", "dinner", "snack", "appetite", "hungry", "full",
+            "diet", "binge", "starving", "food", "craving", "drank", "drinking", "fasting", "overeating",
+            "undereating"
+          ],
+      "social": [
+            "friend", "friends", "family", "partner", "coworker", "colleague", "group", "call", "texted", "talked",
+            "met", "visit", "hangout", "community", "conversation", "chat", "connected", "date", "gathering",
+            "phone call", "reunion", "socialized", "texting", "visited"
+          ],
+      "work_stress": [
+            "deadline", "boss", "manager", "workload", "overtime", "meeting", "email", "project", "performance",
+            "burnout", "stressful", "pressure", "task", "office", "job", "backlog", "deliverable", "escalation",
+            "kpi", "layoff", "micromanaged", "on-call", "quota", "review cycle", "sprint", "ticket"
+          ],
+      "physical_symptoms": [
+            "headache", "migraine", "nausea", "stomachache", "chest tightness", "pain", "ache", "fatigue", "dizzy",
+            "sweating", "shaking", "tense", "insomnia", "heart racing", "sick", "body ache", "brain fog", "chills",
+            "cramps", "palpitations", "shortness of breath", "tight chest", "trembling"
+          ],
+      "routines": [
+            "routine", "habit", "daily", "morning", "evening", "schedule", "consistent", "regular", "ritual",
+            "checklist", "track", "repeat", "practice", "structure", "pattern", "bedtime routine", "consistency",
+            "day plan", "habit tracker", "rituals"
+          ],
+      "avoidance": [
+            "avoid", "avoiding", "procrastinate", "procrastinating", "put off", "ignore", "ignored", "escape",
+            "scrolling", "numb out", "skip", "withdraw", "hide", "postpone", "delay", "dodging", "staying away",
+            "turning away"
+          ],
+      "coping": [
+            "breathe", "breathing", "journal", "walk", "exercise", "meditate", "meditation", "therapy",
+            "talked it out", "grounding", "stretch", "rest", "prayer", "music", "coping", "cold shower",
+            "deep breathing", "mindfulness", "self-soothe", "support group", "therapy session", "venting"
+          ],
+      "goals": [
+            "goal", "goals", "target", "milestone", "objective", "aim", "intent", "commitment", "plan", "roadmap",
+            "next step", "progress", "improve", "finish", "complete", "benchmark", "deadline goal", "habit goal",
+            "kpi goal", "targeted"
+          ]
+    },
+  "hedging": [
+      "maybe", "perhaps", "probably", "possibly", "i think", "i guess", "kind of", "sort of", "might", "could",
+      "seems", "apparently", "roughly", "likely", "not sure", "uncertain", "arguably", "at times", "can be",
+      "i believe", "i feel like", "in my view", "it appears", "it may be", "more or less", "possibly so",
+      "to some extent"
+    ],
+  "intensifiers": [
+      "very", "really", "extremely", "totally", "absolutely", "so", "super", "incredibly", "highly", "deeply",
+      "completely", "utterly", "seriously", "hugely", "massively", "especially", "exceptionally", "immensely",
+      "remarkably", "tremendously", "wildly"
+    ],
+  "certainty_markers": [
+      "definitely", "certainly", "clearly", "obviously", "always", "never", "without doubt", "for sure",
+      "undeniably", "guaranteed", "surely", "must", "will", "cannot fail", "certain", "certainly so",
+      "for certain", "no doubt", "no question", "unquestionably"
+    ],
+  "slang": [
+      "kinda", "sorta", "gonna", "wanna", "ain't", "dunno", "y'all", "bro", "lol", "omg", "idk", "tbh", "fyi",
+      "nah", "yep", "cool", "chill", "messing up", "bet", "bruh", "fr", "imo", "irl", "lmao", "lowkey", "ngl",
+      "sus", "tho", "vibe", "ya"
+    ],
+  "profanity": [
+      "damn", "hell", "crap", "shit", "freaking", "screw", "wtf", "pissed", "bullshit", "ass", "bastard",
+      "jerk", "fucked", "fucking", "dumbass", "asshole", "bitch", "motherfucker", "pissed off", "shitshow"
+    ],
+  "gratitude": [
+      "thanks", "thank you", "grateful", "appreciate", "appreciated", "blessed", "fortunate", "thankful",
+      "gratitude", "means a lot", "so kind", "supportive", "indebted", "lucky", "i appreciate it",
+      "much appreciated", "so grateful", "thankful for", "with gratitude"
+    ],
+  "conflict_terms": [
+      "argue", "argument", "fight", "fought", "conflict", "tension", "disagree", "criticized", "blame",
+      "resent", "hostile", "defensive", "attacked", "shouted", "yelled", "clash", "confrontation", "dispute",
+      "friction", "misunderstanding", "stonewalling", "ultimatum"
+    ],
+  "support_seeking": [
+      "need help", "can you help", "reach out", "talk to someone", "ask for support", "need advice",
+      "need guidance", "please listen", "i need support", "help me", "lean on", "check in", "call a friend",
+      "contact therapist", "can we talk", "i need someone to talk to", "i need to vent", "please help me",
+      "seeking support"
+    ],
+  "names": [
+      "alex", "sam", "jordan", "taylor", "morgan", "jamie", "chris", "pat", "riley", "casey", "drew", "devon",
+      "emma", "olivia", "liam", "noah", "ava", "mia", "sophia", "ethan", "lucas", "isabella", "amelia",
+      "mason", "logan", "harper", "abigail", "adam", "adrian", "aiden", "alan", "alice", "alyssa", "andrew",
+      "anthony", "aria", "asher", "aubrey", "ben", "benjamin", "brian", "cameron", "carter", "charlotte",
+      "claire", "daniel", "david", "elena", "elijah", "ella", "ellie", "emily", "evelyn", "gabriel", "grace",
+      "hannah", "hazel", "henry", "jack", "jacob", "james", "jason", "john", "joseph", "joshua", "kayla",
+      "kevin", "leo", "lily", "madison", "matthew", "michael", "natalie", "nathan", "nicholas", "nora", "owen",
+      "paul", "peter", "quinn", "ryan", "sarah", "scarlett", "sebastian", "sofia", "thomas", "victoria",
+      "william", "zoe"
+    ],
+  "kinship_terms": [
+      "mom", "mother", "dad", "father", "sister", "brother", "wife", "husband", "partner", "girlfriend",
+      "boyfriend", "son", "daughter", "uncle", "aunt", "cousin", "grandma", "grandpa", "family", "relative",
+      "ancestor", "bro-in-law", "brother-in-law", "child", "children", "fiance", "fiancee", "grandchild",
+      "granddaughter", "grandson", "in-law", "mother-in-law", "nephew", "niece", "parent", "parents",
+      "sibling", "siblings", "stepbrother", "stepdad", "stepfather", "stepmother", "stepsister"
+    ],
+  "transition_words": [
+      "however", "therefore", "moreover", "furthermore", "meanwhile", "then", "next", "afterward", "before",
+      "later", "instead", "otherwise", "consequently", "in addition", "on the other hand", "for example",
+      "for instance", "in contrast", "ultimately", "finally", "additionally", "as a result",
+      "at the same time", "by contrast", "by the way", "even so", "for now", "in conclusion", "in summary",
+      "in the meantime", "nevertheless", "nonetheless", "similarly", "subsequently", "to begin with",
+      "to conclude", "to sum up"
+    ],
+  "nominalization_suffixes": [
+      "tion", "sion", "ment", "ness", "ity", "ance", "ence", "ship", "ism", "age", "acy", "al", "dom", "hood",
+      "ics", "ing", "or", "ure"
+    ],
+  "clause_markers": [
+      "and", "but", "or", "because", "although", "though", "while", "if", "when", "that", "which", "who",
+      "whom", "since", "unless", "whereas", "after", "before", "as", "even though", "provided that", "so that",
+      "until", "whenever", "where"
+    ],
+  "rumination_terms": [
+      "overthink", "overthinking", "can't stop thinking", "again and again", "replaying", "stuck in my head",
+      "obsessing", "looping", "dwelling", "ruminating", "constant thoughts", "caught in a loop", "mental loop",
+      "re-hashing", "repetitive thoughts", "stuck replaying", "thinking in circles"
+    ],
+  "insight_terms": [
+      "realize", "realized", "understand", "learned", "noticed", "recognized", "insight", "it clicked",
+      "i see now", "i figured out", "it makes sense", "aware", "aha moment", "i figured out why",
+      "i now understand", "insightful", "new perspective", "pattern recognition"
+    ],
+  "self_awareness_terms": [
+      "i noticed", "i felt", "i feel", "i tend to", "i realize", "i observed", "my pattern", "my trigger",
+      "my reaction", "i am aware", "i caught myself", "i became aware", "i can see my pattern", "i notice",
+      "i recognize this in me", "i see the pattern"
+    ],
+  "metacognition_terms": [
+      "thinking about my thinking", "meta", "reflect", "reflection", "monitoring my thoughts", "reframing",
+      "cognitive pattern", "mindset", "mental model", "self-monitor", "evaluate my thoughts",
+      "examining my thoughts", "monitoring my mindset", "observing my mind", "questioning my assumptions"
+    ],
+  "formal_words": [
+      "therefore", "thus", "hence", "moreover", "consequently", "furthermore", "however", "notwithstanding",
+      "regarding", "significant", "substantial", "objective", "analysis", "evaluate", "implement", "determine",
+      "consider", "approach", "method", "outcome", "accordingly", "assessment", "criterion", "evidence",
+      "framework", "implication", "indicator", "parameter", "procedure", "protocol", "rationale", "scope",
+      "synthesis", "variable"
+    ],
+  "goal_statements": [
+      "my goal is", "i want to", "i intend to", "i aim to", "i plan to", "my target is", "i'm working toward",
+      "i am working toward", "next objective", "my priority is", "i commit to", "i will focus on",
+      "i am committed to", "i set a goal to", "my aim is to", "my intention is to", "my objective is"
+    ],
+  "progress_terms": [
+      "progress", "improved", "better than before", "step forward", "moving forward", "on track", "kept going",
+      "continued", "small win", "momentum", "growth", "advanced", "breakthrough", "gains", "headway",
+      "incremental progress", "improving steadily", "making strides", "traction"
+    ],
+  "stuck_terms": [
+      "stuck", "plateau", "not moving", "can't get past", "blocked", "same place", "going in circles",
+      "spinning wheels", "standstill", "no progress", "at an impasse", "dead end", "gridlock",
+      "not getting anywhere", "no traction"
+    ],
+  "planning_terms": [
+      "plan", "schedule", "timeline", "next step", "strategy", "roadmap", "organize", "prepare", "outline",
+      "prioritize", "break it down", "action plan", "calendar", "contingency plan", "execution plan",
+      "plan ahead", "schedule out", "step-by-step"
+    ],
+  "avoidance_language": [
+      "avoid", "put off", "later", "not now", "skip", "ignore", "hide from", "can't face", "delay", "postpone",
+      "procrastinate", "numb out", "dodging it", "i avoid it", "i keep postponing", "i'm putting it off",
+      "sidestep"
+    ],
+  "commitment_terms": [
+      "commit", "committed", "i will", "i won't quit", "stay consistent", "follow through", "dedicated",
+      "discipline", "promise myself", "show up", "stick to", "keep going", "i am committed", "i commit",
+      "i will follow through", "long-term commitment", "remain committed"
+    ],
+  "isolation_terms": [
+      "alone", "isolated", "withdrawn", "disconnected", "nobody", "no one", "left out", "by myself", "cut off",
+      "distant", "lonely", "without support", "socially isolated", "unaccompanied", "unsupported"
+    ]
+}

@@ -1,1 +1,16 @@
 test.json
+.vscode/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+*.db
+*.sqlite
+*.log
+*.bak
+*.tmp
+*.swp
+.DS_Store
+.venv/
+venv/
+env/

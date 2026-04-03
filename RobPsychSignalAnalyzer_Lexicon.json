@@ -1,0 +1,227 @@
+{
+  "core_affect": {
+    "positive_words": [
+      "good", "better", "best", "great", "excellent", "calm", "peaceful", "hopeful", "optimistic", "grateful", "thankful", "safe", "secure", "relief", "joy", "joyful", "content", "contented", "proud", "confident", "stable", "steady", "balanced", "uplifted", "encouraged", "motivated", "resilient", "supported", "connected", "comforted"
+    ],
+    "negative_words": [
+      "bad", "worse", "worst", "awful", "terrible", "horrible", "hopeless", "sad", "depressed", "angry", "furious", "afraid", "scared", "stressed", "anxious", "panicked", "guilty", "ashamed", "empty", "numb", "overwhelmed", "helpless", "worthless", "broken", "isolated", "lonely", "drained", "exhausted", "restless", "defeated"
+    ],
+    "emotion_categories": {
+      "joy": ["joy", "happy", "happiness", "glad", "excited", "pleased", "thankful", "relieved", "optimistic", "delighted", "cheerful", "upbeat", "elated", "content", "satisfied", "hopeful"],
+      "sadness": ["sad", "down", "depressed", "lonely", "grief", "heartbroken", "tearful", "empty", "miserable", "sorrow", "hopeless", "low", "discouraged", "despair", "blue", "hurt"],
+      "anger": ["angry", "mad", "furious", "irritated", "resentful", "frustrated", "annoyed", "rage", "outraged", "hostile", "bitter", "irate", "enraged", "aggravated", "upset", "seething"],
+      "fear": ["fear", "afraid", "scared", "anxious", "worried", "panic", "terrified", "uneasy", "nervous", "dread", "alarmed", "apprehensive", "frightened", "insecure", "unsafe", "threatened"],
+      "hope": ["hope", "hopeful", "improving", "progress", "recover", "healing", "heal", "future", "possibility", "possible", "encouraged", "promising", "faith", "belief", "grow", "improvement"],
+      "stress": ["stressed", "overwhelmed", "tense", "pressure", "pressured", "burned", "frazzled", "strained", "exhausted", "burned out", "on edge", "overloaded", "frantic", "restless", "worn out", "drained"]
+    },
+    "intensifiers": [
+      "very", "extremely", "really", "so", "totally", "completely", "deeply", "intensely", "incredibly", "absolutely", "highly", "remarkably", "severely", "profoundly", "immensely", "utterly", "especially", "seriously", "wildly", "super"
+    ],
+    "mixed_emotion_patterns": [
+      "\\b(on one hand|on the other hand)\\b",
+      "\\bbut at the same time\\b",
+      "\\bpart of me.*part of me\\b",
+      "\\bI feel (happy|hopeful).*(sad|afraid|angry)\\b",
+      "\\bmixed feelings\\b",
+      "\\bconflicting emotions\\b",
+      "\\bI feel both\\b",
+      "\\bhappy and sad\\b",
+      "\\bhopeful but afraid\\b"
+    ]
+  },
+  "cognitive_patterns": {
+    "self_negative_patterns": [
+      "\\bI am (a failure|worthless|broken|useless|pathetic)\\b",
+      "\\bI can't do anything right\\b",
+      "\\bI ruin everything\\b",
+      "\\bthere is something wrong with me\\b",
+      "\\bI hate myself\\b",
+      "\\bI am not good enough\\b",
+      "\\bI don't deserve\\b",
+      "\\bI am a burden\\b",
+      "\\bI am unlovable\\b",
+      "\\bI am defective\\b"
+    ],
+    "cognitive_distortions": {
+      "catastrophizing": ["\\bdisaster\\b", "\\bruined forever\\b", "\\bworst case\\b", "\\bnever recover\\b", "\\beverything is ruined\\b", "\\bit will be a catastrophe\\b", "\\bthis is the end\\b", "\\btotal disaster\\b"],
+      "black_white": ["\\balways\\b", "\\bnever\\b", "\\beverything or nothing\\b", "\\ball or nothing\\b", "\\bcompletely\\b", "\\btotally\\b", "\\bno middle ground\\b", "\\beither\\b"],
+      "overgeneralization": ["\\bevery time\\b", "\\bnothing ever changes\\b", "\\bthis always happens\\b", "\\bthis never works\\b", "\\beveryone does this\\b", "\\bno one ever\\b"],
+      "personalization": ["\\bit is all my fault\\b", "\\bI caused this\\b", "\\beveryone is upset because of me\\b", "\\bthey are mad because of me\\b", "\\bthis happened because I\\b", "\\bI am to blame\\b"],
+      "mind_reading": ["\\bthey think I am\\b", "\\bthey must think\\b", "\\bI know what they think\\b", "\\bthey are judging me\\b", "\\beveryone thinks badly of me\\b", "\\bI can tell they hate me\\b"],
+      "fortune_telling": ["\\bit will go badly\\b", "\\bI know this will fail\\b", "\\bnothing will work\\b", "\\bit is going to be terrible\\b", "\\bthis will end badly\\b", "\\bI will fail\\b"],
+      "emotional_reasoning": ["\\bI feel it so it must be true\\b", "\\bbecause I feel bad, I am bad\\b", "\\bI feel anxious so it is dangerous\\b", "\\bif I feel it, it is fact\\b", "\\bmy feelings prove it\\b"],
+      "should_statements": ["\\bI should\\b", "\\bI must\\b", "\\bI ought to\\b", "\\bthey should\\b", "\\bI have to\\b", "\\bI need to\\b", "\\bI am supposed to\\b", "\\bmust not\\b"]
+    },
+    "ambivalence_patterns": [
+      "\\bnot sure\\b", "\\bon the one hand\\b", "\\bpart of me\\b", "\\btorn\\b", "\\bconflicted\\b", "\\bindecisive\\b", "\\bcan't decide\\b", "\\bmixed about\\b", "\\bunsure what to do\\b"
+    ],
+    "uncertainty_patterns": [
+      "\\bmaybe\\b", "\\bperhaps\\b", "\\bI don't know\\b", "\\buncertain\\b", "\\bunsure\\b", "\\bpossibly\\b", "\\bnot certain\\b", "\\bunclear\\b", "\\bunknown\\b", "\\bnot convinced\\b"
+    ],
+    "metacognition_patterns": [
+      "\\bI notice that I\\b", "\\bI am thinking about my thinking\\b", "\\bI realize\\b", "\\bI reflect\\b", "\\bI observe\\b", "\\bI am aware that\\b", "\\bI can see my pattern\\b", "\\bI recognize\\b", "\\bI am monitoring\\b"
+    ]
+  },
+  "identity": {
+    "identity_uncertainty_patterns": [
+      "\\bI don't know who I am\\b", "\\bwho am I\\b", "\\bI feel lost\\b", "\\bno sense of self\\b", "\\bidentity crisis\\b", "\\bI don't recognize myself\\b", "\\bI have no identity\\b", "\\bI feel undefined\\b"
+    ],
+    "self_fragmentation_patterns": [
+      "\\bpart of me\\b", "\\bI feel split\\b", "\\btwo versions of me\\b", "\\bI am not myself\\b", "\\bdisconnected from myself\\b", "\\bfragmented\\b", "\\bpulled in different directions\\b", "\\bI feel divided\\b"
+    ],
+    "positive_self_talk": [
+      "\\bI can handle this\\b", "\\bI am capable\\b", "\\bI am learning\\b", "\\bI am improving\\b", "\\bI did my best\\b", "\\bI am enough\\b", "\\bI am proud of myself\\b", "\\bI can grow\\b", "\\bI can do this\\b", "\\bI trust myself\\b"
+    ],
+    "negative_self_talk": [
+      "\\bI am useless\\b", "\\bI am weak\\b", "\\bI am a mess\\b", "\\bI am not enough\\b", "\\bI hate myself\\b", "\\bI am a failure\\b", "\\bI am broken\\b", "\\bI am hopeless\\b", "\\bI can't be fixed\\b", "\\bI am worthless\\b"
+    ]
+  },
+  "social": {
+    "withdrawal_patterns": [
+      "\\bavoid people\\b", "\\bstay away from everyone\\b", "\\bisolate\\b", "\\bkeep to myself\\b", "\\bwithdraw\\b", "\\bpull away\\b", "\\bshut people out\\b", "\\bdon't want to talk\\b", "\\bI disappear\\b", "\\bI retreat\\b"
+    ],
+    "connection_patterns": [
+      "\\breach out\\b", "\\bspend time with\\b", "\\bconnect with\\b", "\\bsupportive friend\\b", "\\bfeel close\\b", "\\bopen up\\b", "\\bcall a friend\\b", "\\bfeel understood\\b", "\\bbelong\\b", "\\bshared with\\b"
+    ],
+    "perceived_rejection_patterns": [
+      "\\bthey don't want me\\b", "\\bI was rejected\\b", "\\bleft out\\b", "\\bignored me\\b", "\\bnot wanted\\b", "\\bthey don't care about me\\b", "\\bI feel excluded\\b", "\\bthey pushed me away\\b", "\\bI was dismissed\\b"
+    ],
+    "hyperfocus_patterns": [
+      "\\bwhat they think of me\\b", "\\btheir opinion of me\\b", "\\bpeople are judging me\\b", "\\beveryone is watching me\\b", "\\bI care too much what others think\\b", "\\bneed their approval\\b", "\\bobsessed with being liked\\b"
+    ],
+    "attachment_patterns": [
+      "\\babandon\\b", "\\bcling\\b", "\\bneed reassurance\\b", "\\bfear of losing\\b", "\\btoo dependent\\b", "\\bfear of abandonment\\b", "\\bpush people away\\b", "\\battachment\\b", "\\bseparation anxiety\\b"
+    ],
+    "boundary_issue_patterns": [
+      "\\bcannot say no\\b", "\\bpeople pleasing\\b", "\\bno boundaries\\b", "\\bthey crossed a line\\b", "\\bI overgave\\b", "\\bI overextend\\b", "\\bI let too much slide\\b", "\\bmy boundaries are weak\\b"
+    ],
+    "trust_mistrust_patterns": [
+      "\\bcan't trust\\b", "\\bdo not trust\\b", "\\btrust issues\\b", "\\bbetrayed\\b", "\\btrusting\\b", "\\bmistrust\\b", "\\bsuspicious\\b", "\\bguarded\\b", "\\bI trust them\\b", "\\breliable\\b"
+    ]
+  },
+  "behavioral_intent": {
+    "action_orientation_patterns": [
+      "\\bI will\\b", "\\bI plan to\\b", "\\bnext step\\b", "\\bI started\\b", "\\bI am doing\\b", "\\bI can act\\b", "\\bI am taking action\\b", "\\bI committed to\\b", "\\bI am working on\\b", "\\bI followed through\\b"
+    ],
+    "behavioral_freeze_patterns": [
+      "\\bI froze\\b", "\\bcan't move\\b", "\\bstuck\\b", "\\bparalyzed\\b", "\\bshutdown\\b", "\\bimmobilized\\b", "\\bcan't start\\b", "\\bblanked out\\b", "\\bI stalled\\b"
+    ],
+    "avoidance_behavior_patterns": [
+      "\\bavoid\\b", "\\bput off\\b", "\\bprocrastinate\\b", "\\bescape\\b", "\\bnumb out\\b", "\\bpostpone\\b", "\\bdodge\\b", "\\bdelay\\b", "\\bignore the task\\b", "\\bavoid dealing with\\b"
+    ],
+    "adaptive_coping_patterns": [
+      "\\bbreathing\\b", "\\bexercise\\b", "\\bjournaling\\b", "\\btherapy\\b", "\\bmeditation\\b", "\\bgrounding\\b", "\\bwalk\\b", "\\bstretching\\b", "\\btalked it through\\b", "\\bhealthy routine\\b", "\\bself care\\b"
+    ],
+    "maladaptive_coping_patterns": [
+      "\\bdrink to cope\\b", "\\bovereat\\b", "\\bself harm\\b", "\\bbinge\\b", "\\bsubstance\\b", "\\bdoomscroll\\b", "\\bcompulsive spending\\b", "\\bangry outburst\\b", "\\busing to numb\\b"
+    ],
+    "avoidant_coping_patterns": [
+      "\\bignore it\\b", "\\bpretend it's fine\\b", "\\bshut down\\b", "\\bscroll for hours\\b", "\\bsleep all day\\b", "\\bzone out\\b", "\\bavoid talking about it\\b", "\\bdistract myself\\b", "\\bkeep busy to avoid\\b"
+    ],
+    "help_seeking_patterns": [
+      "\\basked for help\\b", "\\bneed help\\b", "\\btalked to my therapist\\b", "\\breached out for support\\b", "\\breach out for support\\b", "\\bcan someone help\\b", "\\bcalled for help\\b", "\\basked a friend\\b", "\\bseeking support\\b", "\\bbooked counseling\\b"
+    ]
+  },
+  "regulation": {
+    "agency_loss_patterns": [
+      "\\bno control\\b", "\\bhelpless\\b", "\\bpowerless\\b", "\\bcan't stop\\b", "\\bout of my hands\\b", "\\bI have no say\\b", "\\bI am trapped\\b", "\\bI can't change this\\b", "\\bstuck with this\\b"
+    ],
+    "agency_reclamation_patterns": [
+      "\\bI choose\\b", "\\bI decided\\b", "\\bI took control\\b", "\\bI can change\\b", "\\bI am responsible\\b", "\\bI can influence this\\b", "\\bI have options\\b", "\\bI took a step\\b", "\\bI can respond differently\\b"
+    ],
+    "escalation_patterns": [
+      "\\bspiraling\\b", "\\bgetting worse\\b", "\\bout of control\\b", "\\bblowing up\\b", "\\bpanic rising\\b", "\\bescalating\\b", "\\bintensifying\\b", "\\bboiling over\\b", "\\bcan't calm down\\b"
+    ],
+    "deescalation_patterns": [
+      "\\bcalmed down\\b", "\\bslowing down\\b", "\\bgrounded\\b", "\\bsettled\\b", "\\bregulated\\b", "\\bstabilized\\b", "\\btook a breath\\b", "\\bcooled off\\b", "\\brecentered\\b"
+    ],
+    "emotional_suppression_patterns": [
+      "\\bI hid my feelings\\b", "\\bI don't want to feel\\b", "\\bkept it in\\b", "\\bshut off my emotions\\b", "\\bnumb\\b", "\\bI swallowed it\\b", "\\bI bottled it up\\b", "\\bI masked my feelings\\b", "\\bI shut down emotionally\\b"
+    ],
+    "emotion_labeling_words": [
+      "sad", "angry", "fearful", "anxious", "ashamed", "guilty", "hopeful", "content", "frustrated", "overwhelmed", "irritated", "resentful", "disappointed", "embarrassed", "grateful", "relieved", "tense", "numb", "lonely", "joyful"
+    ],
+    "emotion_differentiation_words": [
+      "irritated", "resentful", "disappointed", "grief", "embarrassed", "uneasy", "tense", "discouraged", "calm", "relieved", "apprehensive", "vulnerable", "deflated", "hopeful", "restless", "regretful", "contented", "agitated", "dejected", "comforted"
+    ]
+  },
+  "temporal": {
+    "past_markers": ["\\byesterday\\b", "\\blast year\\b", "\\bused to\\b", "\\bback then\\b", "\\bpreviously\\b", "\\bearlier\\b", "\\bin the past\\b", "\\bbefore\\b", "\\bonce\\b", "\\blast month\\b", "\\bchildhood\\b", "\\bwhen I was\\b"],
+    "present_markers": ["\\bright now\\b", "\\btoday\\b", "\\bcurrently\\b", "\\bat the moment\\b", "\\bthese days\\b", "\\bthis week\\b", "\\bnowadays\\b", "\\bin this moment\\b", "\\bcurrently feeling\\b", "\\bpresently\\b"],
+    "future_markers": ["\\btomorrow\\b", "\\bnext week\\b", "\\bgoing to\\b", "\\bI will\\b", "\\bin the future\\b", "\\bsoon\\b", "\\blater\\b", "\\bnext month\\b", "\\beventually\\b", "\\bplan to\\b", "\\bintend to\\b", "\\blooking ahead\\b"]
+  },
+  "somatic": {
+    "stress_words": ["stress", "stressed", "tense", "overwhelmed", "pressure", "burnout", "frazzled", "wired", "strained", "on edge", "stretched thin", "overloaded", "frantic", "strained out", "anxious", "overtaxed"],
+    "sleep_patterns": ["\\bcan't sleep\\b", "\\binsomnia\\b", "\\bwoke up\\b", "\\bslept poorly\\b", "\\bnightmares\\b", "\\btrouble sleeping\\b", "\\brestless night\\b", "\\bwoke up tired\\b", "\\bcouldn't fall asleep\\b", "\\bkept waking up\\b", "\\bpoor sleep\\b"],
+    "somatic_patterns": ["\\btight chest\\b", "\\bheadache\\b", "\\bstomach knot\\b", "\\bheart racing\\b", "\\bbody ache\\b", "\\bmuscle tension\\b", "\\bshaky\\b", "\\bshortness of breath\\b", "\\bnausea\\b", "\\bstomach pain\\b", "\\bchest pressure\\b"],
+    "energy_words": ["energized", "drained", "exhausted", "fatigued", "rested", "sluggish", "motivated", "depleted", "tired", "sleepy", "wired", "lethargic", "vital", "vigorous", "spent", "burned out"],
+    "arousal_words": ["alert", "wired", "jittery", "amped", "agitated", "calm", "settled", "hyper", "keyed up", "stimulated", "restless", "revved", "activated", "soothed", "regulated"],
+    "pain_words": ["pain", "hurt", "ache", "sore", "throbbing", "burning", "sharp", "dull", "stabbing", "cramping", "tender", "pounding", "tingling", "spasm", "discomfort", "agony"]
+  },
+  "existential": {
+    "existential_anxiety_patterns": [
+      "\\bwhat is the point\\b", "\\bmeaningless\\b", "\\bexistential\\b", "\\bnothing matters\\b", "\\bdeath anxiety\\b", "\\bwhy am I here\\b", "\\bno purpose\\b", "\\bvoid\\b", "\\bfear of death\\b", "\\bexistential dread\\b"
+    ],
+    "meaning_making_patterns": [
+      "\\bI learned\\b", "\\bthis taught me\\b", "\\bI make meaning\\b", "\\bgrowth from this\\b", "\\bI understand why\\b", "\\bI found meaning\\b", "\\bI can integrate this\\b", "\\bthis has meaning\\b", "\\bI can grow from this\\b"
+    ],
+    "purpose_patterns": [
+      "\\bmy purpose\\b", "\\bcalling\\b", "\\bwhat I am here for\\b", "\\bdirection\\b", "\\bmission\\b", "\\bmeaningful goals\\b", "\\bsense of purpose\\b", "\\bpath forward\\b", "\\bmy values guide me\\b"
+    ],
+    "value_conflict_patterns": [
+      "\\bconflict with my values\\b", "\\bagainst what I believe\\b", "\\bvalue clash\\b", "\\bmoral conflict\\b", "\\bnot aligned with my values\\b", "\\binner conflict\\b", "\\bcompromised my values\\b", "\\bethical tension\\b", "\\bbetrayed my principles\\b"
+    ]
+  },
+  "linguistic_structure": {
+    "disorganization_markers": [
+      "\\bI can't explain\\b", "\\bnone of this makes sense\\b", "\\bjumping around\\b", "\\bscattered\\b", "\\ball over the place\\b", "\\bmy thoughts are everywhere\\b", "\\bhard to organize\\b", "\\bdisjointed\\b", "\\brambling\\b"
+    ],
+    "overcontrolled_markers": [
+      "\\bprecisely\\b", "\\bstrictly\\b", "\\bexactly\\b", "\\bmeticulous\\b", "\\bcarefully controlled\\b", "\\bstructured\\b", "\\borderly\\b", "\\bsystematic\\b", "\\brigid\\b", "\\boverly careful\\b"
+    ],
+    "run_on_markers": [
+      ", and then, and then", "\\bwithout stopping\\b", "\\bkept going and going\\b", "\\bno pause\\b", "\\bkept talking\\b", "\\bone long sentence\\b", "\\bcouldn't stop talking\\b"
+    ],
+    "lexical_variety_exclusions": [
+      "the", "a", "an", "and", "or", "but", "if", "to", "of", "in", "on", "at", "is", "are", "was", "were", "it", "that", "this", "these", "those", "be", "been", "being", "do", "does", "did", "for", "with", "as", "by", "from", "not", "no"
+    ]
+  },
+  "thought_speed": {
+    "racing_markers": [
+      "\\bracing thoughts\\b", "\\bcan't slow down\\b", "\\bmind is racing\\b", "\\btoo many thoughts\\b", "\\brapid fire\\b", "\\bthoughts are speeding\\b", "\\bbrain won't stop\\b", "\\bthought avalanche\\b", "\\bnonstop thoughts\\b"
+    ],
+    "slowed_markers": [
+      "\\bslow thinking\\b", "\\bmental fog\\b", "\\bcan't think straight\\b", "\\bblank mind\\b", "\\bsluggish thoughts\\b", "\\bbrain fog\\b", "\\bslow to process\\b", "\\bdull thinking\\b", "\\bmentally tired\\b"
+    ],
+    "repetition_markers": [
+      "\\bagain and again\\b", "\\bover and over\\b", "\\bkeep repeating\\b", "\\bsame thought\\b", "\\blooping\\b", "\\bstuck on repeat\\b", "\\bcan't stop replaying\\b", "\\bthought loop\\b", "\\brepeating in my head\\b"
+    ],
+    "topic_shift_markers": [
+      "\\banyway\\b", "\\bby the way\\b", "\\bon another note\\b", "\\bswitching gears\\b", "\\brandomly\\b", "\\bside note\\b", "\\bseparately\\b", "\\bnew topic\\b", "\\bthat reminds me\\b"
+    ]
+  },
+  "meta_signals": {
+    "emotional_congruence_rules": [
+      "Lower score when multiple high-intensity opposing emotions co-occur.",
+      "Higher score with stable sentiment and low mixed emotion markers."
+    ],
+    "cognitive_emotional_alignment_rules": [
+      "Compare negative affect density with cognitive distortion density.",
+      "Closer values indicate stronger alignment."
+    ],
+    "behavior_emotion_alignment_rules": [
+      "Action plus hope should outweigh freeze plus fear for higher alignment.",
+      "Large divergence lowers alignment."
+    ],
+    "self_other_balance_rules": [
+      "Balanced first-person and other-oriented language increases score.",
+      "Extreme self-focus or other-focus lowers score."
+    ],
+    "psychological_needs_keywords": {
+      "safety": ["safe", "secure", "stability", "shelter", "protection", "certainty", "predictable", "trustworthy", "grounded", "protected", "steady", "stabilized"],
+      "belonging": ["belong", "connected", "accepted", "included", "community", "friendship", "closeness", "support", "understood", "bond", "attachment", "together"],
+      "esteem": ["respect", "confidence", "competent", "valued", "recognition", "pride", "achievement", "self-worth", "dignity", "capable", "effective", "mastery"],
+      "growth": ["learn", "develop", "improve", "progress", "expand", "grow", "evolve", "advance", "build", "practice", "adapt", "transform"]
+    }
+  }
+}
